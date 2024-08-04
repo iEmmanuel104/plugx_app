@@ -59,21 +59,20 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                   image: onboardingData[index]['image'] ?? '',
                   title: onboardingData[index]['title'] ?? '',
                   description: onboardingData[index]['description'] ?? '',
+                  buildDots: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      onboardingData.length,
+                      (dotIndex) => buildDot(index: dotIndex),
+                    ),
+                  ),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 50),
+              padding: const EdgeInsets.only(bottom: 50, left: 20, right: 20),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      onboardingData.length,
-                      (index) => buildDot(index: index),
-                    ),
-                  ),
-                  const SizedBox(height: 30),
                   CustomButton(
                     text: currentIndex == onboardingData.length - 1
                         ? 'Login'
@@ -92,21 +91,11 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                   if (currentIndex == onboardingData.length - 1)
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
-                      child: TextButton(
+                      child: CustomButton(
+                        text: 'Sign Up',
                         onPressed: () {
                           Navigator.pushReplacementNamed(context, '/signup');
                         },
-                        style: TextButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                        ),
-                        child: const Text(
-                          'Sign Up',
-                          style: TextStyle(
-                            color: Color(0xFF5D9A99),
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
                       ),
                     ),
                 ],
@@ -137,12 +126,14 @@ class OnboardingContent extends StatelessWidget {
   final String image;
   final String title;
   final String description;
+  final Widget buildDots;
 
   const OnboardingContent({
     super.key,
     required this.image,
     required this.title,
     required this.description,
+    required this.buildDots,
   });
 
   @override
@@ -153,6 +144,8 @@ class OnboardingContent extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(image, height: MediaQuery.of(context).size.height * 0.4),
+          const SizedBox(height: 20),
+          buildDots,
           const SizedBox(height: 40),
           Text(
             title,
@@ -170,7 +163,7 @@ class OnboardingContent extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
         ],
-        ),
+      ),
     );
-    }
+  }
 }

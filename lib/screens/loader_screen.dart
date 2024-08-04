@@ -16,6 +16,7 @@ class LoaderScreenState extends State<LoaderScreen>
     'assets/images/plug1.png',
     'assets/images/plug2.png',
     'assets/images/plug3.png',
+    'assets/images/plug2.png',
   ];
 
   @override

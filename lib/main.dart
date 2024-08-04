@@ -6,6 +6,7 @@ import 'screens/sign_in_screen.dart';
 import 'screens/sign_up_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const PlugXChangeApp());
 }
 
@@ -16,7 +17,7 @@ class PlugXChangeApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Plug XChange',
-       theme: ThemeData(
+      theme: ThemeData(
         primaryColor: const Color(0xFF5D9A99), // Primary color
         scaffoldBackgroundColor: const Color(0xFF161622), // Background color
         fontFamily: GoogleFonts.poppins().fontFamily,
