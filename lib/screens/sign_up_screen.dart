@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plugx_app/widgets/custom_button.dart';
+import 'package:plugx_app/widgets/custom_text_field.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -16,73 +17,25 @@ class SignUpScreen extends StatelessWidget {
             const Text('Sign Up',
                 style: TextStyle(color: Colors.white, fontSize: 24)),
             const SizedBox(height: 20),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Full Name',
-                labelStyle: const TextStyle(color: Colors.white),
-                prefixIcon: const Icon(Icons.person, color: Colors.white),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.blue),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              style: const TextStyle(color: Colors.white),
+            const CustomTextField(
+              labelText: 'Full Name',
+              prefixIcon: Icons.person,
             ),
             const SizedBox(height: 20),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Phone Number',
-                labelStyle: const TextStyle(color: Colors.white),
-                prefixIcon: const Icon(Icons.phone, color: Colors.white),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.blue),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              style: const TextStyle(color: Colors.white),
+            const CustomTextField(
+              labelText: 'Phone Number',
+              prefixIcon: Icons.phone,
             ),
             const SizedBox(height: 20),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Email Address',
-                labelStyle: const TextStyle(color: Colors.white),
-                prefixIcon: const Icon(Icons.email, color: Colors.white),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.blue),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              style: const TextStyle(color: Colors.white),
+            const CustomTextField(
+              labelText: 'Email Address',
+              prefixIcon: Icons.email,
             ),
             const SizedBox(height: 20),
-            TextField(
+            const CustomTextField(
+              labelText: 'Password',
+              prefixIcon: Icons.lock,
               obscureText: true,
-              decoration: InputDecoration(
-                labelText: 'Password',
-                labelStyle: const TextStyle(color: Colors.white),
-                prefixIcon: const Icon(Icons.lock, color: Colors.white),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.blue),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              style: const TextStyle(color: Colors.white),
             ),
             const SizedBox(height: 20),
             CustomButton(

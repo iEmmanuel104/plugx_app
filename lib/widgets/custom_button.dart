@@ -12,16 +12,29 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.blue,
-        padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+    return Container(
+      width: double.infinity,
+      height: 60, // Adjusted height
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor:const Color(0xFF5D9A99), 
+          padding: const EdgeInsets.symmetric(vertical: 20), 
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+        child: Text(
+          text,
+          style: const TextStyle(
+            color: Colors.white, 
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+
+            ),
         ),
       ),
-      child: Text(text, style: const TextStyle(color: Colors.white)),
     );
   }
 }

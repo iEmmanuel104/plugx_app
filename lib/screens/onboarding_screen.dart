@@ -6,12 +6,13 @@ class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _OnboardingScreenState createState() => _OnboardingScreenState();
+  OnboardingScreenState createState() => OnboardingScreenState();
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen> {
+class OnboardingScreenState extends State<OnboardingScreen> {
   int currentIndex = 0;
+  final PageController _pageController = PageController();
+
   final List<Map<String, String>> onboardingData = [
     {
       'image': 'assets/images/onboarding1.png',
@@ -34,14 +35,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   ];
 
   @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFF161622),
       body: SafeArea(
         child: Column(
           children: [
             Expanded(
               flex: 3,
               child: PageView.builder(
+                controller: _pageController,
                 onPageChanged: (index) {
                   setState(() {
                     currentIndex = index;
@@ -58,7 +67,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             Expanded(
               flex: 1,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -67,29 +75,35 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       (index) => buildDot(index: index),
                     ),
                   ),
+                  const SizedBox(height: 30),
                   CustomButton(
                     text: currentIndex == onboardingData.length - 1
                         ? 'Login'
                         : 'Next',
                     onPressed: () {
                       if (currentIndex == onboardingData.length - 1) {
-                        Navigator.pushNamed(context, '/signin');
+                        Navigator.pushReplacementNamed(context, '/signin');
                       } else {
-                        setState(() {
-                          currentIndex++;
-                        });
+                        _pageController.nextPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
                       }
                     },
                   ),
-                  currentIndex == onboardingData.length - 1
-                      ? TextButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/signup');
-                          },
-                          child: const Text('Sign Up',
-                              style: TextStyle(color: Colors.white)),
-                        )
-                      : Container(),
+                  if (currentIndex == onboardingData.length - 1)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(context, '/signup');
+                        },
+                        child: const Text(
+                          'Sign Up',
+                          style: TextStyle(color: Color(0xFF5D9A99)),
+                        ),
+                      ),
+                    ),
                 ],
               ),
             ),
@@ -99,13 +113,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  Container buildDot({required int index}) {
-    return Container(
+  Widget buildDot({required int index}) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
+      margin: const EdgeInsets.only(right: 5),
       height: 10,
       width: currentIndex == index ? 20 : 10,
-      margin: const EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
-        color: currentIndex == index ? Colors.white : Colors.grey,
+        color: currentIndex == index
+            ? const Color(0xFF0066FF)
+            : Colors.grey.withOpacity(0.5),
         borderRadius: BorderRadius.circular(5),
       ),
     );

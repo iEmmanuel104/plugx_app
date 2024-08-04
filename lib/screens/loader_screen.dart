@@ -45,22 +45,32 @@ class LoaderScreenState extends State<LoaderScreen>
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(_images[_animation.value], width: 100, height: 100),
-            const SizedBox(height: 20),
-            const Text(
-              'PLUG XCHANGE',
-              style: TextStyle(color: Colors.white, fontSize: 24),
+Widget build(BuildContext context) {
+  return Scaffold(
+    backgroundColor: const Color(0xFF161622),
+    body: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width: 120,
+            height: 120,
+            decoration: const BoxDecoration(
+              color: Color(0xFF5D9A99),
+              shape: BoxShape.circle,
             ),
-          ],
-        ),
+            child: Center(
+              child: Image.asset(_images[_animation.value], width: 120, height: 120),
+            ),
+          ),
+          const SizedBox(height: 20),
+          const Text(
+            'PLUG XCHANGE',
+            style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
+          ),
+        ],
       ),
-    );
-  }
+    ),
+  );
+}
 }

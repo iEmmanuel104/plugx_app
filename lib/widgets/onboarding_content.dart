@@ -5,7 +5,8 @@ class OnboardingContent extends StatelessWidget {
   final String title;
   final String description;
 
-  const OnboardingContent({super.key, 
+  const OnboardingContent({
+    super.key,
     required this.image,
     required this.title,
     required this.description,
@@ -16,15 +17,24 @@ class OnboardingContent extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset(image, height: 300), // Adjust height as necessary
-        const SizedBox(height: 20),
-        Text(title, style: const TextStyle(color: Colors.white, fontSize: 24)),
+        Image.asset(image, height: 250), // Adjusted height
+        const SizedBox(height: 40),
+        Text(
+          title,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 26,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         const SizedBox(height: 20),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 40),
           child: Text(
             description,
-            style: const TextStyle(color: Colors.white, fontSize: 16),
+            style: const TextStyle(
+                color:  Color(0xFF7E848D),
+                fontSize: 14),
             textAlign: TextAlign.center,
           ),
         ),

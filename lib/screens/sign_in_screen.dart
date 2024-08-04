@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plugx_app/widgets/custom_button.dart';
+import 'package:plugx_app/widgets/custom_text_field.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -16,39 +17,15 @@ class SignInScreen extends StatelessWidget {
             const Text('Sign In',
                 style: TextStyle(color: Colors.white, fontSize: 24)),
             const SizedBox(height: 20),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Email Address',
-                labelStyle: const TextStyle(color: Colors.white),
-                prefixIcon: const Icon(Icons.email, color: Colors.white),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.blue),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              style: const TextStyle(color: Colors.white),
+            const CustomTextField(
+              labelText: 'Email Address',
+              prefixIcon: Icons.email,
             ),
             const SizedBox(height: 20),
-            TextField(
+            const CustomTextField(
+              labelText: 'Password',
+              prefixIcon: Icons.lock,
               obscureText: true,
-              decoration: InputDecoration(
-                labelText: 'Password',
-                labelStyle: const TextStyle(color: Colors.white),
-                prefixIcon: const Icon(Icons.lock, color: Colors.white),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.white),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.blue),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              style: const TextStyle(color: Colors.white),
             ),
             const SizedBox(height: 20),
             CustomButton(
