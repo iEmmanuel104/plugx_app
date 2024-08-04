@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:plugx_app/widgets/onboarding_content.dart';
 import 'package:plugx_app/widgets/custom_button.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -16,13 +15,13 @@ class OnboardingScreenState extends State<OnboardingScreen> {
   final List<Map<String, String>> onboardingData = [
     {
       'image': 'assets/images/onboarding1.png',
-      'title': 'Trade From Anywhere',
+      'title': 'Trade From\nAnywhere',
       'description':
           'Trade your crypto assets and other digital payment from anywhere in the world.'
     },
     {
       'image': 'assets/images/onboarding2.png',
-      'title': 'Pay Utility Bills',
+      'title': 'Pay Utility\nBills',
       'description':
           'Manage and pay for your utility bills and other services all from one platform.'
     },
@@ -48,7 +47,6 @@ class OnboardingScreenState extends State<OnboardingScreen> {
         child: Column(
           children: [
             Expanded(
-              flex: 3,
               child: PageView.builder(
                 controller: _pageController,
                 onPageChanged: (index) {
@@ -64,8 +62,8 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                 ),
               ),
             ),
-            Expanded(
-              flex: 1,
+            Padding(
+              padding: const EdgeInsets.only(bottom: 50),
               child: Column(
                 children: [
                   Row(
@@ -98,9 +96,16 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                         onPressed: () {
                           Navigator.pushReplacementNamed(context, '/signup');
                         },
+                        style: TextButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                        ),
                         child: const Text(
                           'Sign Up',
-                          style: TextStyle(color: Color(0xFF5D9A99)),
+                          style: TextStyle(
+                            color: Color(0xFF5D9A99),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
@@ -116,15 +121,56 @@ class OnboardingScreenState extends State<OnboardingScreen> {
   Widget buildDot({required int index}) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
-      margin: const EdgeInsets.only(right: 5),
-      height: 10,
-      width: currentIndex == index ? 20 : 10,
+      margin: const EdgeInsets.symmetric(horizontal: 5),
+      height: 8,
+      width: currentIndex == index ? 24 : 8,
       decoration: BoxDecoration(
-        color: currentIndex == index
-            ? const Color(0xFF0066FF)
-            : Colors.grey.withOpacity(0.5),
-        borderRadius: BorderRadius.circular(5),
+        color:
+            currentIndex == index ? Colors.blue : Colors.grey.withOpacity(0.5),
+        borderRadius: BorderRadius.circular(4),
       ),
     );
   }
+}
+
+class OnboardingContent extends StatelessWidget {
+  final String image;
+  final String title;
+  final String description;
+
+  const OnboardingContent({
+    super.key,
+    required this.image,
+    required this.title,
+    required this.description,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(image, height: MediaQuery.of(context).size.height * 0.4),
+          const SizedBox(height: 40),
+          Text(
+            title,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 20),
+          Text(
+            description,
+            style: const TextStyle(color: Color(0xFF7E848D), fontSize: 16),
+            textAlign: TextAlign.center,
+          ),
+        ],
+        ),
+    );
+    }
 }
