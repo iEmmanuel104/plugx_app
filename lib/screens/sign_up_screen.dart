@@ -14,7 +14,15 @@ class SignUpScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_outlined, color: Colors.white),
+          icon: Container(
+            decoration: const BoxDecoration(
+              color: Color(0xFF1E1E2D),
+              shape: BoxShape.circle,
+            ),
+            padding: const EdgeInsets.all(8.0),
+            child:
+                const Icon(Icons.arrow_back_ios_outlined, color: Colors.white),
+          ),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
