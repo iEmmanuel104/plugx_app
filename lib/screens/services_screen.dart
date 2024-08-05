@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../widgets/service_button.dart';
-import '../widgets/bottom_navigation_bar.dart';
 
 class ServicesScreen extends StatelessWidget {
   const ServicesScreen({super.key});

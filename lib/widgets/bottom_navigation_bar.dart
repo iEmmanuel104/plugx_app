@@ -14,25 +14,27 @@ class CustomBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: currentIndex,
-      backgroundColor: const Color(0xFF161622),
+      backgroundColor: const Color(0xFF27273A),
       selectedItemColor: const Color(0xFF5D9A99),
       unselectedItemColor: Colors.grey,
       type: BottomNavigationBarType.fixed,
+      showSelectedLabels: true,
+      showUnselectedLabels: true,
       items: const [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home),
+          icon: Icon(Icons.home_outlined),
           label: 'Home',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.grid_view),
+          icon: Icon(Icons.grid_view_outlined),
           label: 'Services',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.history),
+          icon: Icon(Icons.view_list),
           label: 'Transactions',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.settings),
+          icon: Icon(Icons.settings_outlined),
           label: 'Settings',
         ),
       ],

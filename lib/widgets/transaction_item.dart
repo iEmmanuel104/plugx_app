@@ -7,26 +7,19 @@ class TransactionItem extends StatelessWidget {
   final String amount;
 
   const TransactionItem({
-    Key? key,
+    super.key,
     required this.icon,
     required this.title,
     required this.subtitle,
     required this.amount,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Container(
-        width: 40,
-        height: 40,
-        decoration: BoxDecoration(
-          color: const Color(0xFF1E1E2D),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Center(
-          child: Image.asset(icon, width: 24, height: 24),
-        ),
+      leading: CircleAvatar(
+        backgroundColor: const Color(0xFF1E1E2D),
+        child: Image.asset(icon, width: 24, height: 24),
       ),
       title: Text(
         title,

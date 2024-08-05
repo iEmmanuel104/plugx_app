@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../widgets/wallet_balance_card.dart';
 import '../widgets/service_button.dart';
 import '../widgets/transaction_item.dart';
-import '../widgets/bottom_navigation_bar.dart';
 import 'services_screen.dart';
 
 class HomeScreen extends StatelessWidget {
