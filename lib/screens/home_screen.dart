@@ -27,22 +27,22 @@ class HomeScreen extends StatelessWidget {
                         CircleAvatar(
                           backgroundImage:
                               AssetImage('assets/images/profile_pic.png'),
-                          radius: 25,
+                          radius: 30,
                         ),
-                        SizedBox(width: 10),
+                        SizedBox(width: 15),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               'Welcome back,',
-                              style:
-                                  TextStyle(color: Color(0xFF7E848D), fontSize: 14),
+                              style: TextStyle(
+                                  color: Color(0xFF7E848D), fontSize: 16),
                             ),
                             Text(
                               'John Doe',
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 24,
+                                  fontSize: 26,
                                   fontWeight: FontWeight.bold),
                             ),
                           ],
@@ -52,40 +52,40 @@ class HomeScreen extends StatelessWidget {
                     Icon(
                       Icons.chat_bubble_outline,
                       color: Colors.white,
+                      size: 28,
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 30),
                 WalletBalanceCard(
                   balance: '₦56,500.00',
                   onTopUp: () {
-                    // Handle top up action
                     print('Top Up pressed');
                   },
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 30),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ServiceButton(
                       icon: 'assets/images/crypto_icon.png',
                       label: 'Crypto',
                       onPressed: () {
                         print('Crypto pressed');
-                        // Navigate to Crypto screen or show Crypto dialog
                       },
+                      isHomeScreen: true,
                     ),
                     ServiceButton(
                       icon: 'assets/images/giftcards_icon.png',
                       label: 'Giftcards',
                       onPressed: () {
                         print('Giftcards pressed');
-                        // Navigate to Giftcards screen or show Giftcards dialog
                       },
+                      isHomeScreen: true,
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -93,7 +93,7 @@ class HomeScreen extends StatelessWidget {
                       'Utilities',
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 18,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold),
                     ),
                     TextButton(
@@ -105,7 +105,8 @@ class HomeScreen extends StatelessWidget {
                       },
                       child: const Text(
                         'More',
-                        style: TextStyle(color: Color(0xFF5D9A99)),
+                        style:
+                            TextStyle(color: Color(0xFF5D9A99), fontSize: 16),
                       ),
                     ),
                   ],
@@ -118,7 +119,6 @@ class HomeScreen extends StatelessWidget {
                       label: 'Airtime',
                       onPressed: () {
                         print('Airtime pressed');
-                        // Handle Airtime action
                       },
                     ),
                     ServiceButton(
@@ -126,7 +126,6 @@ class HomeScreen extends StatelessWidget {
                       label: 'Data',
                       onPressed: () {
                         print('Data pressed');
-                        // Handle Data action
                       },
                     ),
                     ServiceButton(
@@ -134,7 +133,6 @@ class HomeScreen extends StatelessWidget {
                       label: 'Electricity',
                       onPressed: () {
                         print('Electricity pressed');
-                        // Handle Electricity action
                       },
                     ),
                     ServiceButton(
@@ -142,12 +140,11 @@ class HomeScreen extends StatelessWidget {
                       label: 'Betting',
                       onPressed: () {
                         print('Betting pressed');
-                        // Handle Betting action
                       },
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -155,17 +152,17 @@ class HomeScreen extends StatelessWidget {
                       'Transaction History',
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 18,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold),
                     ),
                     TextButton(
                       onPressed: () {
-                        // Navigate to all transactions
                         print('See All Transactions pressed');
                       },
                       child: const Text(
                         'See All',
-                        style: TextStyle(color: Color(0xFF5D9A99)),
+                        style:
+                            TextStyle(color: Color(0xFF5D9A99), fontSize: 16),
                       ),
                     ),
                   ],
