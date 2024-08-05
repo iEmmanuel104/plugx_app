@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
+  final Function(int) onTap;
 
   const CustomBottomNavigationBar({
-    Key? key,
+    super.key,
     required this.currentIndex,
-  }) : super(key: key);
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +36,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
           label: 'Settings',
         ),
       ],
-      onTap: (index) {
-        // Handle navigation
-      },
+      onTap: onTap,
     );
   }
 }

@@ -3,9 +3,10 @@ import '../widgets/wallet_balance_card.dart';
 import '../widgets/service_button.dart';
 import '../widgets/transaction_item.dart';
 import '../widgets/bottom_navigation_bar.dart';
+import 'services_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,19 +47,33 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 20),
-                const WalletBalanceCard(
+                WalletBalanceCard(
                   balance: '₦56,500.00',
-                  onTopUp: null,
+                  onTopUp: () {
+                    // Handle top up action
+                    print('Top Up pressed');
+                  },
                 ),
                 const SizedBox(height: 20),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ServiceButton(
-                        icon: 'assets/images/crypto_icon.png', label: 'Crypto'),
+                      icon: 'assets/images/crypto_icon.png',
+                      label: 'Crypto',
+                      onPressed: () {
+                        print('Crypto pressed');
+                        // Navigate to Crypto screen or show Crypto dialog
+                      },
+                    ),
                     ServiceButton(
-                        icon: 'assets/images/giftcards_icon.png',
-                        label: 'Giftcards'),
+                      icon: 'assets/images/giftcards_icon.png',
+                      label: 'Giftcards',
+                      onPressed: () {
+                        print('Giftcards pressed');
+                        // Navigate to Giftcards screen or show Giftcards dialog
+                      },
+                    ),
                   ],
                 ),
                 const SizedBox(height: 20),
@@ -74,7 +89,10 @@ class HomeScreen extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        // Navigate to all utilities
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => const ServicesScreen()),
+                        );
                       },
                       child: const Text(
                         'More',
@@ -83,20 +101,41 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ServiceButton(
-                        icon: 'assets/images/airtime_icon.png',
-                        label: 'Airtime'),
+                      icon: 'assets/images/airtime_icon.png',
+                      label: 'Airtime',
+                      onPressed: () {
+                        print('Airtime pressed');
+                        // Handle Airtime action
+                      },
+                    ),
                     ServiceButton(
-                        icon: 'assets/images/data_icon.png', label: 'Data'),
+                      icon: 'assets/images/data_icon.png',
+                      label: 'Data',
+                      onPressed: () {
+                        print('Data pressed');
+                        // Handle Data action
+                      },
+                    ),
                     ServiceButton(
-                        icon: 'assets/images/electricity_icon.png',
-                        label: 'Electricity'),
+                      icon: 'assets/images/electricity_icon.png',
+                      label: 'Electricity',
+                      onPressed: () {
+                        print('Electricity pressed');
+                        // Handle Electricity action
+                      },
+                    ),
                     ServiceButton(
-                        icon: 'assets/images/betting_icon.png',
-                        label: 'Betting'),
+                      icon: 'assets/images/betting_icon.png',
+                      label: 'Betting',
+                      onPressed: () {
+                        print('Betting pressed');
+                        // Handle Betting action
+                      },
+                    ),
                   ],
                 ),
                 const SizedBox(height: 20),
@@ -113,6 +152,7 @@ class HomeScreen extends StatelessWidget {
                     TextButton(
                       onPressed: () {
                         // Navigate to all transactions
+                        print('See All Transactions pressed');
                       },
                       child: const Text(
                         'See All',
@@ -150,7 +190,6 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: const CustomBottomNavigationBar(currentIndex: 0),
     );
   }
 }

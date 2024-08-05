@@ -34,7 +34,7 @@ class LoaderScreenState extends State<LoaderScreen>
           });
 
     // Navigate to onboarding screen after 5 seconds
-    Future.delayed(const Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 15), () {
       Navigator.of(context).pushReplacementNamed('/onboarding');
     });
   }

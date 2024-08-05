@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:plugx_app/widgets/app_scaffold.dart';
 import 'package:plugx_app/widgets/custom_button.dart';
 import 'package:plugx_app/widgets/custom_text_field.dart';
 
@@ -56,8 +57,10 @@ class SignInScreen extends StatelessWidget {
             CustomButton(
               text: 'Login',
               onPressed: () {
-                // Perform login logic
-              },
+                  Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const AppScaffold()),
+                );              
+                },
             ),
             const SizedBox(height: 20),
             Center(
