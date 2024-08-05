@@ -19,10 +19,10 @@ class HomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 20),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
+                    const Row(
                       children: [
                         CircleAvatar(
                           backgroundImage:
@@ -49,10 +49,15 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Icon(
-                      Icons.chat_bubble_outline,
-                      color: Colors.white,
-                      size: 28,
+                    GestureDetector(
+                      onTap: () {
+                        print('Chat icon pressed');
+                      },
+                      child: Image.asset(
+                        'assets/images/chat_icon.png',
+                        width: 28,
+                        height: 28,
+                      ),
                     ),
                   ],
                 ),
