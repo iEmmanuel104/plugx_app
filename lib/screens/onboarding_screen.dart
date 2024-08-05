@@ -79,7 +79,7 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                         : 'Next',
                     onPressed: () {
                       if (currentIndex == onboardingData.length - 1) {
-                        Navigator.pushReplacementNamed(context, '/signin');
+                        Navigator.pushNamed(context, '/signin');
                       } else {
                         _pageController.nextPage(
                           duration: const Duration(milliseconds: 300),
@@ -94,7 +94,7 @@ class OnboardingScreenState extends State<OnboardingScreen> {
                       child: CustomButton(
                         text: 'Sign Up',
                         onPressed: () {
-                          Navigator.pushReplacementNamed(context, '/signup');
+                          Navigator.pushNamed(context,'/signup'); // Changed from pushReplacementNamed
                         },
                       ),
                     ),

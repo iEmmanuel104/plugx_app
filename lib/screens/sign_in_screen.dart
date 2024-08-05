@@ -25,7 +25,6 @@ class SignInScreen extends StatelessWidget {
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
-
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
