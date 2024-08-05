@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(18.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -22,26 +22,36 @@ class HomeScreen extends StatelessWidget {
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    Row(
                       children: [
-                        Text(
-                          'Welcome back',
-                          style: TextStyle(color: Colors.grey, fontSize: 14),
+                        CircleAvatar(
+                          backgroundImage:
+                              AssetImage('assets/images/profile_pic.png'),
+                          radius: 25,
                         ),
-                        Text(
-                          'John Doe',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold),
+                        SizedBox(width: 10),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Welcome back,',
+                              style:
+                                  TextStyle(color: Color(0xFF7E848D), fontSize: 14),
+                            ),
+                            Text(
+                              'John Doe',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                    CircleAvatar(
-                      backgroundImage:
-                          AssetImage('assets/images/profile_pic.png'),
-                      radius: 20,
+                    Icon(
+                      Icons.chat_bubble_outline,
+                      color: Colors.white,
                     ),
                   ],
                 ),
