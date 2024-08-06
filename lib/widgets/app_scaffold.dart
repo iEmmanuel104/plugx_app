@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'bottom_navigation_bar.dart';
 import '../screens/home_screen.dart';
 import '../screens/services_screen.dart';
-// import '../screens/transactions_screen.dart';
-// import '../screens/settings_screen.dart';
+import '../screens/transactions_screen.dart';
+import '../screens/settings_screen.dart';
 
 class AppScaffold extends StatefulWidget {
   final int initialIndex;
@@ -26,8 +26,8 @@ class _AppScaffoldState extends State<AppScaffold> {
   final List<Widget> _screens = [
     const HomeScreen(),
     const ServicesScreen(),
-    // const TransactionsScreen(),
-    // const SettingsScreen(),
+    const TransactionsScreen(),
+    const SettingsScreen(),
   ];
 
   void _onTabTapped(int index) {
