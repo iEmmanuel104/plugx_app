@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:plugx_app/screens/inner_screens/airtime_screen.dart';
 import 'package:plugx_app/screens/inner_screens/betting_screen.dart';
@@ -57,7 +58,9 @@ class HomeScreen extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        print('Chat icon pressed');
+                        if (kDebugMode) {
+                          print('Chat icon pressed');
+                        }
                       },
                       child: Image.asset(
                         'assets/images/chat_icon.png',
@@ -71,7 +74,9 @@ class HomeScreen extends StatelessWidget {
                 WalletBalanceCard(
                   balance: '₦56,500.00',
                   onTopUp: () {
-                    print('Top Up pressed');
+                    if (kDebugMode) {
+                      print('Top Up pressed');
+                    }
                   },
                 ),
                 const SizedBox(height: 30),
@@ -194,7 +199,9 @@ class HomeScreen extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        print('See All Transactions pressed');
+                        if (kDebugMode) {
+                          print('See All Transactions pressed');
+                        }
                       },
                       child: const Text(
                         'See All',

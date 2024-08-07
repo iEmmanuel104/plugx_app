@@ -11,6 +11,7 @@ class AppScaffold extends StatefulWidget {
   const AppScaffold({super.key, this.initialIndex = 0});
 
   @override
+  // ignore: library_private_types_in_public_api
   _AppScaffoldState createState() => _AppScaffoldState();
 }
 

@@ -58,12 +58,12 @@ class GiftCardScreen extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  _buildGiftCardItem('Apple'),
-                  _buildGiftCardItem('Amazon'),
-                  _buildGiftCardItem('Google Play'),
-                  _buildGiftCardItem('American Express'),
-                  _buildGiftCardItem('Starbucks'),
-                  _buildGiftCardItem('Netflix'),
+                  _buildCryptoItem('Apple', 'assets/images/apple.png'),
+                  _buildCryptoItem('Amazon', 'assets/images/amazon.png'),
+                  _buildCryptoItem('Google Play', 'assets/images/google_play.png'),
+                  _buildCryptoItem('American Express)', 'assets/images/amex.png'),
+                  _buildCryptoItem('Starbucks', 'assets/images/starbucks.png'),
+                  _buildCryptoItem('Netflix', 'assets/images/netflix.png'),
                 ],
               ),
             ),
@@ -73,13 +73,34 @@ class GiftCardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildGiftCardItem(String name) {
-    return ListTile(
-      leading: CircleAvatar(
-        backgroundColor: Colors.white24,
-        child: Text(name[0]),
+  Widget _buildCryptoItem(
+      String name, String assetPath) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        decoration: const BoxDecoration(
+          border: Border(
+            bottom: BorderSide(color: Color(0xFF232533)),
+          ),
+        ),
+        child: ListTile(
+          leading: Container(
+            padding: const EdgeInsets.all(2.0),
+            decoration: const BoxDecoration(
+              color: Colors.transparent,
+              shape: BoxShape.circle,
+              border: Border.fromBorderSide(
+                  BorderSide(color: Colors.white, width: 2)),
+            ),
+            child: CircleAvatar(
+              backgroundColor: Colors.transparent,
+              child: Image.asset(assetPath, width: 40, height: 40),
+            ),
+          ),
+          title: Text(name, style: const TextStyle(color: Colors.white)),
+        ),
       ),
-      title: Text(name, style: const TextStyle(color: Colors.white)),
     );
   }
 }

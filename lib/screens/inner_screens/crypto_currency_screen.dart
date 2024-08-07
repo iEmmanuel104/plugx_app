@@ -38,7 +38,7 @@ class CryptoCurrencyScreen extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 30),
-             Padding(
+            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18.0),
               child: TextField(
                 decoration: InputDecoration(
@@ -59,12 +59,18 @@ class CryptoCurrencyScreen extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  _buildCryptoItem('Bitcoin (BTC)', '₦99,450,000.00', -0.87),
-                  _buildCryptoItem('Etherium (ETH)', '₦5,560,000.00', 4.16),
-                  _buildCryptoItem('Tether USD (USDT)', '₦1,860.00', 2.51),
-                  _buildCryptoItem('Dogecoin (DOGE)', '₦210.00', 0.90),
-                  _buildCryptoItem('Litecoin (LTC)', '₦118,276.32', 2.34),
-                  _buildCryptoItem('XRP (XRP)', '₦735.72', 4.16),
+                  _buildCryptoItem('Bitcoin (BTC)', '₦99,450,000.00', -0.87,
+                      'assets/images/bitcoin.png'),
+                  _buildCryptoItem('Etherium (ETH)', '₦5,560,000.00', 4.16,
+                      'assets/images/ethereum.png'),
+                  _buildCryptoItem('Tether USD (USDT)', '₦1,860.00', 2.51,
+                      'assets/images/tether.png'),
+                  _buildCryptoItem('Dogecoin (DOGE)', '₦210.00', 0.90,
+                      'assets/images/dogecoin.png'),
+                  _buildCryptoItem('Litecoin (LTC)', '₦118,276.32', 2.34,
+                      'assets/images/litecoin.png'),
+                  _buildCryptoItem(
+                      'XRP (XRP)', '₦735.72', 4.16, 'assets/images/xrp.png'),
                 ],
               ),
             ),
@@ -74,18 +80,40 @@ class CryptoCurrencyScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCryptoItem(String name, String value, double percentage) {
-    return ListTile(
-      leading: CircleAvatar(
-        backgroundColor: Colors.white24,
-        child: Text(name[0]),
-      ),
-      title: Text(name, style: const TextStyle(color: Colors.white)),
-      subtitle: Text(value, style: const TextStyle(color: Colors.white70)),
-      trailing: Text(
-        '${percentage.isNegative ? '' : '+'}${percentage.toStringAsFixed(2)}%',
-        style: TextStyle(
-          color: percentage.isNegative ? Colors.red : Colors.green,
+  Widget _buildCryptoItem(
+      String name, String value, double percentage, String assetPath) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        decoration: const BoxDecoration(
+          border: Border(
+            bottom: BorderSide(color: Color(0xFF232533)),
+          ),
+        ),
+        child: ListTile(
+          leading: Container(
+            padding: const EdgeInsets.all(2.0),
+            decoration: const BoxDecoration(
+              color: Colors.transparent,
+              shape: BoxShape.circle,
+              border: Border.fromBorderSide(
+                  BorderSide(color: Colors.white, width: 2)),
+            ),
+            child: CircleAvatar(
+              backgroundColor: Colors.transparent,
+              child: Image.asset(assetPath, width: 40, height: 40),
+            ),
+          ),
+          title: Text(name, style: const TextStyle(color: Colors.white)),
+          subtitle: Text(value, style: const TextStyle(color: Colors.white70)),
+          trailing: Text(
+            '${percentage.isNegative ? '' : '+'}${percentage.toStringAsFixed(2)}%',
+            style: TextStyle(
+              color: percentage.isNegative ? Colors.red : Colors.green,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
       ),
     );
