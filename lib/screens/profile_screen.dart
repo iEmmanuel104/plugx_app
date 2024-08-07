@@ -19,19 +19,22 @@ class ProfileScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: Padding(
-          padding: const EdgeInsets.all(18.0),
-          child: IconButton(
-            icon: Container(
+          padding: const EdgeInsets.only(top: 18.0, left: 16.0),
+          child: GestureDetector(
+            onTap: () => Navigator.of(context).pop(),
+            child: Container(
+              padding: const EdgeInsets.all(6.0),
               decoration: const BoxDecoration(
                 color: Color(0xFF1E1E2D),
                 shape: BoxShape.circle,
               ),
-              child:
-                  const Icon(Icons.arrow_back_ios_outlined, color: Colors.white),
+              child: const Icon(Icons.arrow_back_ios_outlined,
+                  color: Colors.white),
             ),
-            onPressed: () => Navigator.of(context).pop(),
           ),
         ),
+
+
       ),
       body: SingleChildScrollView(
         child: Padding(

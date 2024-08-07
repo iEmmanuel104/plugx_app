@@ -18,17 +18,18 @@ class ContactUsScreen extends StatelessWidget {
         elevation: 0,
         automaticallyImplyLeading: false,
         leading: Padding(
-          padding: const EdgeInsets.all(18.0),
-          child: IconButton(
-            icon: Container(
+          padding: const EdgeInsets.only(top: 18.0, left: 16.0),
+          child: GestureDetector(
+            onTap: () => Navigator.of(context).pop(),
+            child: Container(
+              padding: const EdgeInsets.all(6.0),
               decoration: const BoxDecoration(
                 color: Color(0xFF1E1E2D),
                 shape: BoxShape.circle,
               ),
-              padding: const EdgeInsets.all(8.0),
-              child: const Icon(Icons.arrow_back_ios_outlined, color: Colors.white),
+              child: const Icon(Icons.arrow_back_ios_outlined,
+                  color: Colors.white),
             ),
-            onPressed: () => Navigator.of(context).pop(),
           ),
         ),
       ),
@@ -52,13 +53,20 @@ class ContactUsScreen extends StatelessWidget {
       {Widget? trailing, Color textColor = Colors.white}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: ListTile(
-        leading:
-            Image.asset(imagePath, color: Colors.white, width: 28, height: 28),
-        title: Text(title, style: TextStyle(color: textColor, fontSize: 18)),
-        trailing: trailing ??
-            const Icon(Icons.chevron_right, color: Colors.white, size: 24),
-        onTap: onTap,
+      child: Container(
+        decoration: const BoxDecoration(
+          border: Border(
+            bottom: BorderSide(color: Color(0xFF232533)),
+          ),
+        ),
+        child: ListTile(
+          leading: Image.asset(imagePath,
+              color: Colors.white, width: 28, height: 28),
+          title: Text(title, style: TextStyle(color: textColor, fontSize: 18)),
+          trailing: trailing ??
+              const Icon(Icons.chevron_right, color: Color(0xFF7E848D), size: 24),
+          onTap: onTap,
+        ),
       ),
     );
   }

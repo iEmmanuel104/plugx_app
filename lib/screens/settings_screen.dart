@@ -127,12 +127,19 @@ class SettingsScreen extends StatelessWidget {
       {Widget? trailing, Color textColor = Colors.white}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: ListTile(
-        leading: Icon(icon, color: Colors.white, size: 28),
-        title: Text(title, style: TextStyle(color: textColor, fontSize: 18)),
-        trailing: trailing ??
-            const Icon(Icons.chevron_right, color: Colors.white, size: 24),
-        onTap: onTap,
+      child: Container(
+        decoration: const BoxDecoration(
+          border: Border(
+            bottom: BorderSide(color: Color(0xFF232533)),
+          ),
+        ),
+        child: ListTile(
+            leading: Icon(icon, color: Colors.white, size: 28),
+            title: Text(title, style: TextStyle(color: textColor, fontSize: 18)),
+            trailing: trailing ??
+                const Icon(Icons.chevron_right, color: Color(0xFF7E848D), size: 24),
+            onTap: onTap,
+        ),
       ),
     );
   }
