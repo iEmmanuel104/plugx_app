@@ -9,7 +9,7 @@ class AirtimeScreen extends StatefulWidget {
 
 class _AirtimeScreenState extends State<AirtimeScreen> {
   final TextEditingController _amountController =
-      TextEditingController(text: '2000.00');
+      TextEditingController(text: '0.00');
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +95,7 @@ class _AirtimeScreenState extends State<AirtimeScreen> {
       child: Column(
         children: [
           const CircleAvatar(
-            radius: 25,
+            radius: 30,
             backgroundImage: AssetImage('assets/images/profile_pic.png'),
           ),
           const SizedBox(height: 5),
@@ -126,35 +126,42 @@ class _AirtimeScreenState extends State<AirtimeScreen> {
   }
 
 Widget _buildAmountInput() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'Enter Your Amount',
-          style: TextStyle(color: Color(0xFF5D9A99), fontSize: 16),
-        ),
-        const SizedBox(height: 8),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          decoration: BoxDecoration(
-            color: const Color(0xFF232533),
-            borderRadius: BorderRadius.circular(8),
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: const Color(0xFF232533),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Enter Your Amount',
+            style: TextStyle(color: Color(0xFF5D9A99), fontSize: 16),
           ),
-          child: Row(
+          const SizedBox(height: 8),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text('NGN',
-                  style: TextStyle(color: Color(0xFF5D9A99), fontSize: 24)),
-              const SizedBox(width: 16),
+                  style: TextStyle(
+                      color: Color(0xFF5D9A99),
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold)),
               Expanded(
                 child: TextField(
                   controller: _amountController,
-                  style: const TextStyle(color: Colors.white, fontSize: 24),
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold),
                   decoration: const InputDecoration(
                     border: InputBorder.none,
                     hintText: '0.00',
                     hintStyle: TextStyle(color: Colors.white54),
                   ),
                   keyboardType: TextInputType.number,
+                  textAlign: TextAlign.right,
                   onChanged: (value) {
                     setState(() {});
                   },
@@ -162,8 +169,8 @@ Widget _buildAmountInput() {
               ),
             ],
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -196,7 +203,8 @@ Widget _buildAmountInput() {
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
-          value: 'MTN',
+        //   value: 'MTN',
+          hint: const Text('Select Network', style: TextStyle(color: Colors.white54)),
           isExpanded: true,
           dropdownColor: const Color(0xFF232533),
           style: const TextStyle(color: Colors.white, fontSize: 16),
