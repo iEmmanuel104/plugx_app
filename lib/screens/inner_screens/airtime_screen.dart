@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import '../../widgets/custom_button.dart';
-
-class AirtimeScreen extends StatelessWidget {
+class AirtimeScreen extends StatefulWidget {
   const AirtimeScreen({super.key});
+
+  @override
+  State<AirtimeScreen> createState() => _AirtimeScreenState();
+}
+
+class _AirtimeScreenState extends State<AirtimeScreen> {
+  final TextEditingController _amountController =
+      TextEditingController(text: '2000.00');
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +70,7 @@ class AirtimeScreen extends StatelessWidget {
                   _buildAmountButton('₦200'),
                   _buildAmountButton('₦500'),
                   _buildAmountButton('₦1000'),
-                  _buildAmountButton('₦2000', isSelected: true),
+                  _buildAmountButton('₦2000'),
                   _buildAmountButton('₦5000'),
                 ],
               ),
@@ -99,9 +106,14 @@ class AirtimeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildAmountButton(String amount, {bool isSelected = false}) {
+  Widget _buildAmountButton(String amount) {
+    bool isSelected = _amountController.text == amount.substring(1);
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        setState(() {
+          _amountController.text = amount.substring(1);
+        });
+      },
       style: ElevatedButton.styleFrom(
         backgroundColor:
             isSelected ? const Color(0xFF5D9A99) : const Color(0xFF232533),
@@ -113,29 +125,45 @@ class AirtimeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildAmountInput() {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      decoration: BoxDecoration(
-        color: const Color(0xFF232533),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: const Row(
-        children: [
-          Text('NGN', style: TextStyle(color: Color(0xFF5D9A99))),
-          SizedBox(width: 10),
-          Expanded(
-            child: TextField(
-              style: TextStyle(color: Colors.white),
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: 'Enter Your Amount',
-                hintStyle: TextStyle(color: Colors.white54),
-              ),
-            ),
+Widget _buildAmountInput() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'Enter Your Amount',
+          style: TextStyle(color: Color(0xFF5D9A99), fontSize: 16),
+        ),
+        const SizedBox(height: 8),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          decoration: BoxDecoration(
+            color: const Color(0xFF232533),
+            borderRadius: BorderRadius.circular(8),
           ),
-        ],
-      ),
+          child: Row(
+            children: [
+              const Text('NGN',
+                  style: TextStyle(color: Color(0xFF5D9A99), fontSize: 24)),
+              const SizedBox(width: 16),
+              Expanded(
+                child: TextField(
+                  controller: _amountController,
+                  style: const TextStyle(color: Colors.white, fontSize: 24),
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    hintText: '0.00',
+                    hintStyle: TextStyle(color: Colors.white54),
+                  ),
+                  keyboardType: TextInputType.number,
+                  onChanged: (value) {
+                    setState(() {});
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
