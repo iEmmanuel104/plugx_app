@@ -34,46 +34,49 @@ class AirtimeScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text('Recent',
-                style: TextStyle(color: Colors.white, fontSize: 18)),
-            const SizedBox(height: 10),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: List.generate(
-                    5, (index) => _buildRecentItem('08012345678$index')),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 40),
+              const Text('Recent',
+                  style: TextStyle(color: Colors.white, fontSize: 16)),
+              const SizedBox(height: 10),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: List.generate(
+                      15, (index) => _buildRecentItem('08012345678')),
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-            const Text('Choose An Amount',
-                style: TextStyle(color: Colors.white, fontSize: 18)),
-            const SizedBox(height: 10),
-            Wrap(
-              spacing: 10,
-              runSpacing: 10,
-              children: [
-                _buildAmountButton('₦100'),
-                _buildAmountButton('₦200'),
-                _buildAmountButton('₦500'),
-                _buildAmountButton('₦1000'),
-                _buildAmountButton('₦2000', isSelected: true),
-                _buildAmountButton('₦5000'),
-              ],
-            ),
-            const SizedBox(height: 20),
-            _buildAmountInput(),
-            const SizedBox(height: 20),
-            _buildPhoneNumberInput(),
-            const SizedBox(height: 20),
-            _buildNetworkDropdown(),
-            const Spacer(),
-            CustomButton(text: 'Next', onPressed: () {}),
-          ],
+              const SizedBox(height: 20),
+              const Text('Choose An Amount',
+                  style: TextStyle(color: Colors.white, fontSize: 16)),
+              const SizedBox(height: 20),
+              Wrap(
+                spacing: 10,
+                runSpacing: 10,
+                children: [
+                  _buildAmountButton('₦100'),
+                  _buildAmountButton('₦200'),
+                  _buildAmountButton('₦500'),
+                  _buildAmountButton('₦1000'),
+                  _buildAmountButton('₦2000', isSelected: true),
+                  _buildAmountButton('₦5000'),
+                ],
+              ),
+              const SizedBox(height: 30),
+              _buildAmountInput(),
+              const SizedBox(height: 30),
+              _buildPhoneNumberInput(),
+              const SizedBox(height: 30),
+              _buildNetworkDropdown(),
+              const SizedBox(height: 30),
+              CustomButton(text: 'Next', onPressed: () {}),
+            ],
+          ),
         ),
       ),
     );
@@ -100,10 +103,13 @@ class AirtimeScreen extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {},
       style: ElevatedButton.styleFrom(
-        backgroundColor: isSelected ? const Color(0xFF5D9A99) : const Color(0xFF232533),
+        backgroundColor:
+            isSelected ? const Color(0xFF5D9A99) : const Color(0xFF232533),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       ),
-      child: Text(amount, style: const TextStyle(color: Colors.white)),
+      child: Text(amount,
+          style: const TextStyle(color: Colors.white, fontSize: 24)),
     );
   }
 
@@ -140,13 +146,15 @@ class AirtimeScreen extends StatelessWidget {
         color: const Color(0xFF232533),
         borderRadius: BorderRadius.circular(8),
       ),
-      child: const TextField(
-        style: TextStyle(color: Colors.white),
-        decoration: InputDecoration(
+      child: TextField(
+        style: const TextStyle(color: Colors.white, fontSize: 16),
+        decoration: const InputDecoration(
           border: InputBorder.none,
           hintText: 'Phone Number',
           hintStyle: TextStyle(color: Colors.white54),
         ),
+        keyboardType: TextInputType.phone,
+        controller: TextEditingController(text: '08102345678'),
       ),
     );
   }
@@ -163,7 +171,8 @@ class AirtimeScreen extends StatelessWidget {
           value: 'MTN',
           isExpanded: true,
           dropdownColor: const Color(0xFF232533),
-          style: const TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white, fontSize: 16),
+          icon: const Icon(Icons.arrow_drop_down, color: Colors.white),
           items: ['MTN', 'Airtel', 'Glo', '9mobile']
               .map((String value) => DropdownMenuItem<String>(
                     value: value,
