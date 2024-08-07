@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:plugx_app/screens/inner_screens/airtime_screen.dart';
+import 'package:plugx_app/screens/inner_screens/betting_screen.dart';
+import 'package:plugx_app/screens/inner_screens/crypto_currency_screen.dart';
+import 'package:plugx_app/screens/inner_screens/data_screen.dart';
+import 'package:plugx_app/screens/inner_screens/electricity_screen.dart';
+import 'package:plugx_app/screens/inner_screens/gift_cards_screen.dart';
 import '../widgets/service_button.dart';
 
 class ServicesScreen extends StatelessWidget {
@@ -57,11 +63,32 @@ class ServicesScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
-                const Row(
+                Row(
                   children: [
-                    ServiceButton( icon: 'assets/images/crypto_icon.png', label: 'Crypto'),
-                    SizedBox(width: 20),
-                    ServiceButton( icon: 'assets/images/giftcards_icon.png', label: 'Giftcards'),
+                    ServiceButton(
+                      icon: 'assets/images/crypto_icon.png',
+                      label: 'Crypto',
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const CryptoCurrencyScreen()),
+                        );
+                      },
+                    ),
+                    const SizedBox(width: 20),
+                    ServiceButton(
+                      icon: 'assets/images/giftcards_icon.png',
+                      label: 'Giftcards',
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const GiftCardScreen()),
+                        );
+                      },
+                    ),
                   ],
                 ),
                 const SizedBox(height: 30),
@@ -78,23 +105,59 @@ class ServicesScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
-                const Wrap(
+                Wrap(
                   spacing: 20,
                   runSpacing: 20,
                   children: [
+                    ServiceButton( icon: 'assets/images/airtime_icon.png', label: 'Airtime',
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AirtimeScreen()),
+                        );
+                      },
+                    ),
                     ServiceButton(
-                        icon: 'assets/images/airtime_icon.png',
-                        label: 'Airtime'),
+                      icon: 'assets/images/data_icon.png',
+                      label: 'Data',
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const DataScreen()),
+                        );
+                      },
+                    ),
                     ServiceButton(
-                        icon: 'assets/images/data_icon.png', label: 'Data'),
+                      icon: 'assets/images/electricity_icon.png',
+                      label: 'Electricity',
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ElectricityScreen()),
+                        );
+                      },
+                    ),
                     ServiceButton(
-                        icon: 'assets/images/electricity_icon.png',
-                        label: 'Electricity'),
+                      icon: 'assets/images/betting_icon.png',
+                      label: 'Betting',
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const BettingScreen()),
+                          );
+                        },
+                    ),
                     ServiceButton(
-                        icon: 'assets/images/betting_icon.png',
-                        label: 'Betting'),
-                    ServiceButton(
-                        icon: 'assets/images/tv_icon.png', label: 'TV'),
+                      icon: 'assets/images/tv_icon.png',
+                      label: 'TV',
+                      onPressed: () {
+                        // Implement TV screen navigation
+                      },
+                    ),
                   ],
                 ),
               ],

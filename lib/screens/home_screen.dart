@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:plugx_app/screens/inner_screens/airtime_screen.dart';
+import 'package:plugx_app/screens/inner_screens/betting_screen.dart';
+import 'package:plugx_app/screens/inner_screens/crypto_currency_screen.dart';
+import 'package:plugx_app/screens/inner_screens/data_screen.dart';
+import 'package:plugx_app/screens/inner_screens/electricity_screen.dart';
+import 'package:plugx_app/screens/inner_screens/gift_cards_screen.dart';
 import '../widgets/wallet_balance_card.dart';
 import '../widgets/service_button.dart';
 import '../widgets/transaction_item.dart';
@@ -76,7 +82,12 @@ class HomeScreen extends StatelessWidget {
                       icon: 'assets/images/crypto_icon.png',
                       label: 'Crypto',
                       onPressed: () {
-                        print('Crypto pressed');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const CryptoCurrencyScreen()),
+                        );
                       },
                       isHomeScreen: true,
                     ),
@@ -84,7 +95,11 @@ class HomeScreen extends StatelessWidget {
                       icon: 'assets/images/giftcards_icon.png',
                       label: 'Giftcards',
                       onPressed: () {
-                        print('Giftcards pressed');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const GiftCardScreen()),
+                        );
                       },
                       isHomeScreen: true,
                     ),
@@ -124,28 +139,44 @@ class HomeScreen extends StatelessWidget {
                       icon: 'assets/images/airtime_icon.png',
                       label: 'Airtime',
                       onPressed: () {
-                        print('Airtime pressed');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AirtimeScreen()),
+                        );
                       },
                     ),
                     ServiceButton(
                       icon: 'assets/images/data_icon.png',
                       label: 'Data',
                       onPressed: () {
-                        print('Data pressed');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const DataScreen()),
+                        );
                       },
                     ),
                     ServiceButton(
                       icon: 'assets/images/electricity_icon.png',
                       label: 'Electricity',
                       onPressed: () {
-                        print('Electricity pressed');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ElectricityScreen()),
+                        );
                       },
                     ),
                     ServiceButton(
                       icon: 'assets/images/betting_icon.png',
                       label: 'Betting',
                       onPressed: () {
-                        print('Betting pressed');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const BettingScreen()),
+                        );
                       },
                     ),
                   ],
