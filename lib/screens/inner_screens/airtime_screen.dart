@@ -11,6 +11,9 @@ class _AirtimeScreenState extends State<AirtimeScreen> {
   final TextEditingController _amountController =
       TextEditingController(text: '0.00');
 
+  final TextEditingController _phoneController = TextEditingController();
+  String? _selectedNetwork;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -182,6 +185,7 @@ Widget _buildAmountInput() {
         borderRadius: BorderRadius.circular(8),
       ),
       child: TextField(
+        controller: _phoneController,
         style: const TextStyle(color: Colors.white, fontSize: 16),
         decoration: const InputDecoration(
           border: InputBorder.none,
@@ -189,7 +193,6 @@ Widget _buildAmountInput() {
           hintStyle: TextStyle(color: Colors.white54),
         ),
         keyboardType: TextInputType.phone,
-        controller: TextEditingController(text: '08102345678'),
       ),
     );
   }
@@ -203,8 +206,9 @@ Widget _buildAmountInput() {
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
-        //   value: 'MTN',
-          hint: const Text('Select Network', style: TextStyle(color: Colors.white54)),
+          value: _selectedNetwork,
+          hint: const Text('Select Network',
+              style: TextStyle(color: Colors.white54)),
           isExpanded: true,
           dropdownColor: const Color(0xFF232533),
           style: const TextStyle(color: Colors.white, fontSize: 16),
@@ -215,7 +219,11 @@ Widget _buildAmountInput() {
                     child: Text(value),
                   ))
               .toList(),
-          onChanged: (_) {},
+          onChanged: (String? newValue) {
+            setState(() {
+              _selectedNetwork = newValue;
+            });
+          },
         ),
       ),
     );
