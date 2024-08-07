@@ -26,7 +26,6 @@ class ProfileScreen extends StatelessWidget {
                 color: Color(0xFF1E1E2D),
                 shape: BoxShape.circle,
               ),
-            //   padding: const EdgeInsets.all(8.0),
               child:
                   const Icon(Icons.arrow_back_ios_outlined, color: Colors.white),
             ),
@@ -36,7 +35,7 @@ class ProfileScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(18.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [

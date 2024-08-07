@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:plugx_app/screens/inner_screens/contact_us_screen.dart';
 import 'profile_screen.dart';
-import 'delete_account_screen.dart';
+import 'inner_screens/delete_account_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -9,7 +10,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF161622),
-        appBar: AppBar(
+      appBar: AppBar(
         title: const Padding(
           padding: EdgeInsets.only(top: 18.0),
           child: Text('Settings'),
@@ -32,7 +33,7 @@ class SettingsScreen extends StatelessWidget {
           ),
         ],
       ),
-      body:  Padding(
+      body: Padding(
         padding: const EdgeInsets.fromLTRB(18, 20, 18, 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,23 +69,21 @@ class SettingsScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 40),
-            _buildSettingsItem(context, 'Personal Information', Icons.person_outline,
-                () {
+            _buildSettingsItem(
+                context, 'Personal Information', Icons.person_outline, () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) => const ProfileScreen()));
             }),
+            _buildSettingsItem(context, 'Bank Information',
+                Icons.account_balance_outlined, () {}),
             _buildSettingsItem(
-                context, 'Bank Information', Icons.account_balance_outlined, () {
-            }),
-            _buildSettingsItem(context, 'Currency', Icons.credit_card_outlined, () {
-            },
+                context, 'Currency', Icons.credit_card_outlined, () {},
                 trailing:
                     const Text('NGN', style: TextStyle(color: Colors.white))),
-            _buildSettingsItem(context, 'Notifications', Icons.notifications_none_outlined,
-                () {
-            },
+            _buildSettingsItem(context, 'Notifications',
+                Icons.notifications_none_outlined, () {},
                 trailing: Container(
                   padding: const EdgeInsets.all(8),
                   decoration: const BoxDecoration(
@@ -93,20 +92,22 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   child: const Text('2', style: TextStyle(color: Colors.white)),
                 )),
-            _buildSettingsItem(context, 'Contact Us', Icons.support_agent_outlined, () {
+            _buildSettingsItem(
+                context, 'Contact Us', Icons.support_agent_outlined, () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ContactUsScreen()));
             }),
-            _buildSettingsItem(context, 'Change Password', Icons.lock_outline_rounded, () {
-            }),
-            _buildSettingsItem(context, 'Privacy Policy', Icons.privacy_tip_outlined,
-                () {
-            }),
-            _buildSettingsItem(context, 'Light/Dark Theme', Icons.brightness_6,
-                () {
-            },
+            _buildSettingsItem(
+                context, 'Change Password', Icons.lock_outline_rounded, () {}),
+            _buildSettingsItem(
+                context, 'Privacy Policy', Icons.privacy_tip_outlined, () {}),
+            _buildSettingsItem(
+                context, 'Light/Dark Theme', Icons.brightness_6, () {},
                 trailing: Switch(
                   value: true,
-                  onChanged: (value) {
-                  },
+                  onChanged: (value) {},
                   activeColor: const Color(0xFF5D9A99),
                 )),
             _buildSettingsItem(context, 'Delete Account', Icons.delete, () {
@@ -132,7 +133,6 @@ class SettingsScreen extends StatelessWidget {
         trailing: trailing ??
             const Icon(Icons.chevron_right, color: Colors.white, size: 24),
         onTap: onTap,
-        
       ),
     );
   }
