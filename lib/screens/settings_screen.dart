@@ -11,8 +11,8 @@ class SettingsScreen extends StatelessWidget {
       backgroundColor: const Color(0xFF161622),
         appBar: AppBar(
         title: const Padding(
-          padding: EdgeInsets.only(top: 40.0, bottom: 40.0),
-          child: Text('Settings', style: TextStyle(fontSize: 28)),
+          padding: EdgeInsets.only(top: 18.0),
+          child: Text('Settings'),
         ),
         centerTitle: true,
         titleTextStyle: const TextStyle(color: Colors.white, fontSize: 24),
@@ -20,12 +20,15 @@ class SettingsScreen extends StatelessWidget {
         elevation: 0,
         automaticallyImplyLeading: false,
         actions: [
-          IconButton(
-            icon: const Icon(Icons.qr_code_2_outlined),
-            color: Colors.white,
-            onPressed: () {
-              // TODO: Implement QR code functionality
-            },
+          Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: IconButton(
+              icon: const Icon(Icons.qr_code_2_outlined),
+              color: Colors.white,
+              onPressed: () {
+                // TODO: Implement QR code functionality
+              },
+            ),
           ),
         ],
       ),

@@ -9,26 +9,33 @@ class DeleteAccountScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFF161622),
       appBar: AppBar(
-        title: const Text('Delete Account'),
+        title: const Padding(
+          padding:
+              EdgeInsets.only(top: 18.0), 
+          child: Text('Delete Account'),
+        ),
         centerTitle: true,
         titleTextStyle: const TextStyle(color: Colors.white, fontSize: 24),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: IconButton(
-          icon: Container(
-            decoration: const BoxDecoration(
-              color: Color(0xFF1E1E2D),
-              shape: BoxShape.circle,
+        leading: Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: IconButton(
+            icon: Container(
+              decoration: const BoxDecoration(
+                color: Color(0xFF1E1E2D),
+                shape: BoxShape.circle,
+              ),
+            //   padding: const EdgeInsets.all(8.0),
+              child: const Icon(Icons.arrow_back_ios_outlined,
+                  color: Colors.white),
             ),
-            padding: const EdgeInsets.all(8.0),
-            child:
-                const Icon(Icons.arrow_back_ios_outlined, color: Colors.white),
+            onPressed: () => Navigator.of(context).pop(),
           ),
-          onPressed: () => Navigator.of(context).pop(),
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.fromLTRB(16, 34, 16, 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -50,8 +57,7 @@ class DeleteAccountScreen extends StatelessWidget {
             const Spacer(),
             CustomButton(
               text: 'Proceed',
-              onPressed: () {
-              },
+              onPressed: () {},
             ),
           ],
         ),
@@ -70,24 +76,29 @@ class DeleteAccountScreen extends StatelessWidget {
           children: [
             Text(
               title,
-              style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 12),
             ...items.map((item) => Padding(
-              padding: const EdgeInsets.only(bottom: 8.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text('• ', style: TextStyle(color: Colors.white, fontSize: 16)),
-                  Expanded(
-                    child: Text(
-                      item,
-                      style: const TextStyle(color: Colors.white, fontSize: 16),
-                    ),
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text('• ',
+                          style: TextStyle(color: Colors.white, fontSize: 16)),
+                      Expanded(
+                        child: Text(
+                          item,
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 16),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            )),
+                )),
           ],
         ),
       ),

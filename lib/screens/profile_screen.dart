@@ -10,22 +10,28 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFF161622),
       appBar: AppBar(
-        title: const Text('Profile'),
+        title: const Padding(
+          padding: EdgeInsets.only(top: 18.0),
+          child: Text('Profile'),
+        ),
         centerTitle: true,
         titleTextStyle: const TextStyle(color: Colors.white, fontSize: 24),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: IconButton(
-          icon: Container(
-            decoration: const BoxDecoration(
-              color: Color(0xFF1E1E2D),
-              shape: BoxShape.circle,
+        leading: Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: IconButton(
+            icon: Container(
+              decoration: const BoxDecoration(
+                color: Color(0xFF1E1E2D),
+                shape: BoxShape.circle,
+              ),
+            //   padding: const EdgeInsets.all(8.0),
+              child:
+                  const Icon(Icons.arrow_back_ios_outlined, color: Colors.white),
             ),
-            padding: const EdgeInsets.all(8.0),
-            child:
-                const Icon(Icons.arrow_back_ios_outlined, color: Colors.white),
+            onPressed: () => Navigator.of(context).pop(),
           ),
-          onPressed: () => Navigator.of(context).pop(),
         ),
       ),
       body: SingleChildScrollView(
