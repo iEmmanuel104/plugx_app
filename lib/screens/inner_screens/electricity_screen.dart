@@ -52,7 +52,7 @@ class _ElectricityScreenState extends State<ElectricityScreen> {
           children: [
             const SizedBox(height: 40),
             _buildDropdown('Provider', _selectedProvider,
-                ['BEDC', 'IE', 'ABDC', 'KEDC'], 'Select Network', (value) {
+                ['BEDC', 'IE', 'ABDC', 'KEDC'], 'Select Provider', (value) {
               setState(() {
                 _selectedProvider = value;
               });
