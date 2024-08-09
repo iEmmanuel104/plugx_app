@@ -153,7 +153,7 @@ class _AirtimeScreenState extends State<AirtimeScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
       ),
       child: Text(amount,
-          style: const TextStyle(color: Colors.white, fontSize: 24)),
+          style: TextStyle(color: Colors.white, fontSize: amount.length > 5 ? 18 : 20)),
     );
   }
 
