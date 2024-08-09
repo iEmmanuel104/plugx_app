@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../widgets/custom_button.dart';
+
 class AirtimeScreen extends StatefulWidget {
   const AirtimeScreen({super.key});
 
@@ -46,14 +47,17 @@ class _AirtimeScreenState extends State<AirtimeScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 40),
-              const Text('Recent',
-                  style: TextStyle(color: Colors.white, fontSize: 16)),
-              const SizedBox(height: 10),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text('Recent',
+                    style: TextStyle(color: Colors.white, fontSize: 18)),
+              ),
+              const SizedBox(height: 14),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -61,10 +65,10 @@ class _AirtimeScreenState extends State<AirtimeScreen> {
                       15, (index) => _buildRecentItem('08012345678')),
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 30),
               const Text('Choose An Amount',
-                  style: TextStyle(color: Colors.white, fontSize: 16)),
-              const SizedBox(height: 20),
+                  style: TextStyle(color: Colors.white, fontSize: 18)),
+              const SizedBox(height: 30),
               Wrap(
                 spacing: 10,
                 runSpacing: 10,
@@ -83,8 +87,9 @@ class _AirtimeScreenState extends State<AirtimeScreen> {
               _buildPhoneNumberInput(),
               const SizedBox(height: 30),
               _buildNetworkDropdown(),
-              const SizedBox(height: 30),
+              const Spacer(),
               CustomButton(text: 'Next', onPressed: () {}),
+              const SizedBox(height: 30),
             ],
           ),
         ),
@@ -101,9 +106,9 @@ class _AirtimeScreenState extends State<AirtimeScreen> {
             radius: 30,
             backgroundImage: AssetImage('assets/images/profile_pic.png'),
           ),
-          const SizedBox(height: 5),
+          const SizedBox(height: 8),
           Text(number,
-              style: const TextStyle(color: Colors.white, fontSize: 12)),
+              style: const TextStyle(color: Colors.white, fontSize: 14)),
         ],
       ),
     );
@@ -121,14 +126,14 @@ class _AirtimeScreenState extends State<AirtimeScreen> {
         backgroundColor:
             isSelected ? const Color(0xFF5D9A99) : const Color(0xFF232533),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
       ),
       child: Text(amount,
           style: const TextStyle(color: Colors.white, fontSize: 24)),
     );
   }
 
-Widget _buildAmountInput() {
+  Widget _buildAmountInput() {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
