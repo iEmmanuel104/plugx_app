@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
 import '../../widgets/custom_button.dart';
 
-class DataScreen extends StatelessWidget {
+class DataScreen extends StatefulWidget {
   const DataScreen({super.key});
+
+  @override
+  State<DataScreen> createState() => _DataScreenState();
+}
+
+class _DataScreenState extends State<DataScreen> {
+  String? _selectedNetwork;
+  String? _selectedPackage;
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _amountController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +45,17 @@ class DataScreen extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Recent',
-                style: TextStyle(color: Colors.white, fontSize: 18)),
-            const SizedBox(height: 10),
+            const SizedBox(height: 40),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text('Recent',
+                  style: TextStyle(color: Colors.white, fontSize: 18)),
+            ),
+            const SizedBox(height: 14),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -49,16 +63,35 @@ class DataScreen extends StatelessWidget {
                     5, (index) => _buildRecentItem('08012345678$index')),
               ),
             ),
-            const SizedBox(height: 20),
-            _buildDropdown('Network', 'MTN'),
-            const SizedBox(height: 20),
-            _buildDropdown('Package', '2.5GB | 2days | ₦600'),
-            const SizedBox(height: 20),
-            _buildTextInput('Phone Number', '08102345678'),
-            const SizedBox(height: 20),
-            _buildTextInput('Amount', '₦600.00'),
+            const SizedBox(height: 30),
+            _buildDropdown('Network', _selectedNetwork,
+                ['MTN', 'Airtel', 'Glo', '9mobile'], 'Select Network', (value) {
+              setState(() {
+                _selectedNetwork = value;
+              });
+            }),
+            const SizedBox(height: 30),
+            _buildDropdown('Package', _selectedPackage, [
+              '2.5GB | 2days | ₦600',
+              '1GB | 1day | ₦300',
+              '5GB | 7days | ₦1500',
+              '10GB | 30days | ₦3000'
+            ], 'Select Package', (value) {
+              setState(() {
+                _selectedPackage = value;
+                // Update amount based on selected package
+                _amountController.text = value!.split('|').last.trim();
+              });
+            }),
+            const SizedBox(height: 30),
+            _buildTextInput('Phone Number', '0801 234 5678', _phoneController),
+            const SizedBox(height: 30),
+            _buildTextInput('Amount', '₦0.00', _amountController),
             const Spacer(),
-            CustomButton(text: 'Next', onPressed: () {}),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 60.0),
+              child: CustomButton(text: 'Next', onPressed: () {}),
+            ),
           ],
         ),
       ),
@@ -71,23 +104,27 @@ class DataScreen extends StatelessWidget {
       child: Column(
         children: [
           const CircleAvatar(
-            radius: 25,
+            radius: 30,
             backgroundImage: AssetImage('assets/images/profile_pic.png'),
           ),
-          const SizedBox(height: 5),
+          const SizedBox(height: 8),
           Text(number,
-              style: const TextStyle(color: Colors.white, fontSize: 12)),
+              style: const TextStyle(color: Colors.white, fontSize: 14)),
         ],
       ),
     );
   }
 
-  Widget _buildDropdown(String label, String value) {
+ Widget _buildDropdown(String label, String? value, List<String> items,
+      String hint, Function(String?) onChanged) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: const TextStyle(color: Colors.white, fontSize: 16)),
-        const SizedBox(height: 8),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Text(label, style: const TextStyle(color: Colors.white, fontSize: 18)),
+        ),
+        const SizedBox(height: 5),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           decoration: BoxDecoration(
@@ -97,16 +134,18 @@ class DataScreen extends StatelessWidget {
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
               value: value,
+              hint: Text(hint, style: const TextStyle(color: Colors.white54)),
               isExpanded: true,
               dropdownColor: const Color(0xFF232533),
-              style: const TextStyle(color: Colors.white),
-              items: [value]
+              style: const TextStyle(color: Colors.white, fontSize: 16),
+              icon: const Icon(Icons.arrow_drop_down, color: Colors.white),
+              items: items
                   .map((String value) => DropdownMenuItem<String>(
                         value: value,
                         child: Text(value),
                       ))
                   .toList(),
-              onChanged: (_) {},
+              onChanged: onChanged,
             ),
           ),
         ),
@@ -114,12 +153,19 @@ class DataScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTextInput(String label, String value) {
+  Widget _buildTextInput(
+      String label, String hint, TextEditingController controller) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: const TextStyle(color: Colors.white, fontSize: 16)),
-        const SizedBox(height: 8),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Text(
+            label,
+            style: const TextStyle(color: Colors.white, fontSize: 18),
+          ),
+        ),
+        const SizedBox(height: 5),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           decoration: BoxDecoration(
@@ -127,14 +173,17 @@ class DataScreen extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
           ),
           child: TextField(
-            controller: TextEditingController(text: value),
-            style: const TextStyle(color: Colors.white),
-            decoration: const InputDecoration(
+            controller: controller,
+            style: const TextStyle(color: Colors.white, fontSize: 16),
+            decoration: InputDecoration(
               border: InputBorder.none,
+              hintText: hint,
+              hintStyle: const TextStyle(color: Colors.white54),
             ),
           ),
         ),
       ],
     );
   }
+
 }

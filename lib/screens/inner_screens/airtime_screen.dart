@@ -69,25 +69,49 @@ class _AirtimeScreenState extends State<AirtimeScreen> {
               const Text('Choose An Amount',
                   style: TextStyle(color: Colors.white, fontSize: 18)),
               const SizedBox(height: 30),
-              Wrap(
-                spacing: 10,
-                runSpacing: 10,
-                children: [
-                  _buildAmountButton('₦100'),
-                  _buildAmountButton('₦200'),
-                  _buildAmountButton('₦500'),
-                  _buildAmountButton('₦1000'),
-                  _buildAmountButton('₦2000'),
-                  _buildAmountButton('₦5000'),
-                ],
+              GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                  childAspectRatio:
+                      2.5, // Adjust this value to make buttons wider
+                ),
+                itemCount: 6,
+                itemBuilder: (context, index) {
+                  final amounts = [
+                    '₦100',
+                    '₦200',
+                    '₦500',
+                    '₦1000',
+                    '₦2000',
+                    '₦5000'
+                  ];
+                  return _buildAmountButton(amounts[index]);
+                },
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
               ),
-              const SizedBox(height: 30),
+
+              const SizedBox(height: 20),
               _buildAmountInput(),
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
+              const Padding(
+                padding: EdgeInsets.only(left: 8.0),
+                child: Text('Phone Number',
+                    style: TextStyle(color: Colors.white, fontSize: 18)),
+              ),
+              const SizedBox(height: 5),
               _buildPhoneNumberInput(),
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
+              const Padding(
+                padding: EdgeInsets.only(left: 8.0),
+                child: Text('Network',
+                    style: TextStyle(color: Colors.white, fontSize: 18)),
+              ),
+              const SizedBox(height: 5),
               _buildNetworkDropdown(),
-              const Spacer(),
+              const SizedBox(height: 40),
               CustomButton(text: 'Next', onPressed: () {}),
               const SizedBox(height: 30),
             ],
@@ -194,7 +218,7 @@ class _AirtimeScreenState extends State<AirtimeScreen> {
         style: const TextStyle(color: Colors.white, fontSize: 16),
         decoration: const InputDecoration(
           border: InputBorder.none,
-          hintText: 'Phone Number',
+          hintText: '0801 234 5678',
           hintStyle: TextStyle(color: Colors.white54),
         ),
         keyboardType: TextInputType.phone,
